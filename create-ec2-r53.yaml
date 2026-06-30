@@ -1,0 +1,19 @@
+- name: Create EC2-instances and R53
+  hosts: local
+  connection: local
+  vars:
+    ec2-instance.yaml
+  tasks:
+    - name: Creating EC2-instances
+      amazon.aws.ec2-instance:
+        name: "{{item}}"
+        vpc_subnet_id: "{{vpc_subnet}}"
+        instance_type: "{{instance_type}}"
+        security_group: "{{security_group}}"
+        image_id: "{{image_id}}"
+      loop: "{{instances-names}}"
+      register: ec2details
+
+    - name: EC2-instance details
+      ansible.builtin.debug:
+        msg: "{{ec2details}}"
