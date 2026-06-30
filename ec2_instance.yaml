@@ -3,7 +3,7 @@ instance_type: t3.micro
 security_group: sg-06d6bdc0c077bdb16
 image_id: ami-0220d79f3f480ecf5 #ami_id
 
-instances-names:
+instances_names:
 - mysql-server
 - backend-server
 - frontend-server
