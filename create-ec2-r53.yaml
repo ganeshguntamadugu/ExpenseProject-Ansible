@@ -1,7 +1,7 @@
 - name: Create EC2-instances and R53
   hosts: local
   connection: local
-  vars:
+  vars_files:
     - ec2-instance.yaml
   tasks:
     - name: Creating EC2-instances
