@@ -18,7 +18,7 @@
       ansible.builtin.debug:
         msg: "{{ec2details}}"
 
-    - name: Creating R53 records
+    - name: Creating R53 Private IP records
       amazon.aws.route53:
         state: present
         zone: "{{zone}}"  #Actual Domain name
@@ -29,3 +29,16 @@
         wait: true
         #overwrite: true   #It will overwrite the exiting IP's
       loop: "{{ec2details.results}}"
+
+    - name: Creating R53 Public IP records
+      amazon.aws.route53:
+        state: present
+        zone: "{{zone}}"  #Actual Domain name
+        record: "{{item.item}}.{{zone}}"  #Domine name like "mysql.gangs.shop"
+        type: A     #Record type
+        ttl: 1
+        value: "{{item.instances[0].private_ip_address}}"  #It means IP's of ec2-instance that we creted 
+        wait: true
+        #overwrite: true   #It will overwrite the exiting IP's
+      loop: "{{ec2details.results}}"
+      when: item.item == "frontend"
