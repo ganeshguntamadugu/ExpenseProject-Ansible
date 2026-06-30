@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    ec2-instance.yaml
+    - ec2-instance.yaml
   tasks:
     - name: Creating EC2-instances
       amazon.aws.ec2-instance:
