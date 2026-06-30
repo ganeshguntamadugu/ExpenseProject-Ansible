@@ -5,7 +5,7 @@
     - ec2-instance.yaml
   tasks:
     - name: Creating EC2-instances
-      amazon.aws.ec2-instance:
+      amazon.aws.ec2_instance:
         name: "{{item}}"
         vpc_subnet_id: "{{vpc_subnet}}"
         instance_type: "{{instance_type}}"
