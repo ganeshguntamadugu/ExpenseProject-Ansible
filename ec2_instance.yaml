@@ -1,9 +1,15 @@
-vpc_subnet: subnet-0bea2d1b2c1accc57
-instance_type: t3.micro
-security_group: sg-06d6bdc0c077bdb16
-image_id: ami-0220d79f3f480ecf5 #ami_id
+vpc_subnet: "subnet-0bea2d1b2c1accc57"
+instance_type: "t3.micro"
+security_group: "sg-06d6bdc0c077bdb16"
+image_id: "ami-0220d79f3f480ecf5" #ami_id
 
 instances_names:
 - mysql-server
 - backend-server
 - frontend-server
+
+zone: gangs.shop
+
+
+
+#pip3.9 install botocore boto3
