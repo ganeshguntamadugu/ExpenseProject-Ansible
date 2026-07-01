@@ -37,7 +37,7 @@
         record: "{{zone}}"  #Domine name like "mysql.gangs.shop"
         type: A     #Record type
         ttl: 1
-        value: "{{item.instances[0].private_ip_address}}"  #It means IP's of ec2-instance that we creted 
+        value: "{{item.instances[0].public_ip_address}}"  #It means IP's of ec2-instance that we creted 
         wait: true
         #overwrite: true   #It will overwrite the exiting IP's
       loop: "{{ec2details.results}}"
